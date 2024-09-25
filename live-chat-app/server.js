@@ -10,19 +10,13 @@ require('dotenv').config();
 
 const io = socketIO(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
 
-app.use(
-  cors({
-    origin: "http://localhost:3000", // Allow requests from this origin
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const mongoURI =process.env.URL;
  
