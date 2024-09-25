@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const Message = require("./models/Message");
 const app = express();
 const server = http.createServer(app);
+require('dotenv').config(); 
 
 const io = socketIO(server, {
   cors: {
@@ -17,9 +18,8 @@ const io = socketIO(server, {
 
 app.use(cors());
 
-const mongoURI =
-  "mongodb+srv://lokeshkale2020:Kale@cluster1.z8gl1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1";
-
+const mongoURI =process.env.URL;
+ 
 mongoose
   .connect(mongoURI)
   .then(() => console.log("MongoDB connected"))
